@@ -3,3 +3,19 @@
 -- Book 2: Great Expectations, 4043822646
 -- The checkout date is August 25, 2022 and the 
 -- due date is September 8, 2022.
+
+select * from loans l
+join patrons p on l.patronid = p.patronid
+where p.email = 'jvaan@wisdompets.com'
+order by duedate desc;
+
+insert into loans
+(bookid, patronid, loandate, duedate)
+values (
+(select bookid from books where barcode = 2855934983),
+(select patronid from patrons where email = 'jvaan@wisdompets.com'),
+'2022-08-25','2022-09-08'),
+(
+(select bookid from books where barcode = 4043822646),
+(select patronid from patrons where email = 'jvaan@wisdompets.com'),
+'2022-08-25','2022-09-08');
